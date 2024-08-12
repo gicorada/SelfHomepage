@@ -1,19 +1,34 @@
 {
     "services": [
         {
+            "title": "Jellyfin",
+            "port": 8096,
+            "image": "images/services/jellyfin.png"
+        },
+        {
             "title": "Radarr",
             "port": 7878,
-            "image": "https://via.placeholder.com/150"
+            "image": "images/services/radarr.svg"
         },
         {
             "title": "Lidarr",
             "port": 8686,
-            "image": "https://via.placeholder.com/150"
+            "image": "images/services/lidarr.svg"
+        },
+        {
+            "title": "Readarr",
+            "port": 8787,
+            "image": "images/services/readarr.svg"
         },
         {
             "title": "Sonarr",
             "port": 8989,
-            "image": "https://via.placeholder.com/150"
+            "image": "images/services/sonarr.svg"
+        },
+        {
+            "title": "Plex",
+            "port": 32400,
+            "image": "images/services/plex.png"
         }
     ]
 }

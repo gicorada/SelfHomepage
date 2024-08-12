@@ -43,18 +43,23 @@ main {
 	margin: 0 auto;
 	display: flex;
 	justify-content: space-evenly;
-	
+	flex-wrap: wrap;
 
 }
 
 .item {
 	text-align: center;
 	flex-basis: 25%;
-	margin-bottom: 15px;
+	margin: 15px;
 	padding: 10px;
 	background-color: rgba(14, 19, 32, 0.75);
 	border-radius: 4px;
 	box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+}
+
+.service-logo {
+	height: 100px;
+	margin: 0 auto;
 }
 
 

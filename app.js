@@ -1,45 +1,80 @@
-// Constants
 let HOST
 
 
+let servicesArray = [];
 
-// Funzione per caricare i dati da un file JSON
+
+function validateSettings(data) {
+    if (data.host == null) {
+        throw new Error('You must declare an host in the settings file.');
+    }
+}
+
+function validateServices(data) {
+    data.services.forEach(service => {
+        if (typeof service.title !== 'string' || typeof service.port !== 'number' || typeof service.image !== 'string') {
+            throw new Error('Each service must have "title", "port", e "image" declared');
+        }
+    });
+}
+
 function loadData(file, callback) {
     fetch(file)
         .then(response => response.json())
         .then(data => callback(data))
-        .catch(error => console.error('Errore nel caricamento dei dati:', error));
+        .catch(error => console.error('Data loading error', error));
 }
 
-// Modifica la funzione di inizializzazione per usare i dati caricati
 document.addEventListener('DOMContentLoaded', function() {
     const content = document.getElementById('content');
 
 	// Loads settings
 	loadData("conf/settings.json", function(data) {
-		if(data.host) HOST = data.host;
+		try {
+			validateSettings(data);
+			if(data.host) HOST = data.host;
+		} catch (error) {
+			console.error("Error in settings validation: ", error);
+		}
 	});
 
     // Loads services
     loadData("conf/services.json", function(data) {
-        data.services.forEach((item, index) => {
-            let service = createServiceElement(item, index + 1);
-            content.appendChild(service);
-        });
+		try {
+			data.services.forEach((item) => {
+				let service = {
+					title: item.title,
+					port: item.port,
+					image: item.image,
+					url: `http://${HOST}:${item.port}`
+				};
+				servicesArray.push(service);
+			});
+	
+			// Sort services by port
+			servicesArray.sort((a, b) => a.port - b.port);
+	
+			servicesArray.forEach(service => {
+				let serviceElement = createServiceElement(service);
+				content.appendChild(serviceElement);
+			});
+
+			validateServices(data);
+		} catch (error) {
+			console.error("Error in services validation: ", error);
+		}
     });
 });
 
-function createServiceElement(item, id) {
-    let element = document.createElement('div');
+function createServiceElement(service) {
+    let element = document.createElement('a');
+	element.href = service.url;
     element.className = 'item';
 
-    // Utilizza i dati dal JSON per popolare l'elemento
     element.innerHTML = `
-		<a href="http://${HOST}:${item.port}">
-			<img src="${item.image}" alt="${item.title} logo">
-	        <h2>${item.title}</h2>
-        	<p>Port ${item.port}</p>
-		</a>
+		<img src="${service.image}" alt="${service.title} logo" class="service-logo">
+		<h2>${service.title}</h2>
+		<p>Port ${service.port}</p>
     `;
 
     return element;
