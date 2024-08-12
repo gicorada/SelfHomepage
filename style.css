@@ -1,0 +1,94 @@
+body{
+	font-family: "Consolas", "Monaco", "Lucida Console", "Courier New", Courier, monospace;
+	background-color: rgb(19, 24, 36);
+	color: white;
+}
+
+header {
+	position: sticky;
+	top: 0;
+	
+	background-color:  #131824;
+}
+header ul {
+	padding: 10px;
+	text-align: center;
+	list-style-type: none;
+}
+header li {
+	display: inline;
+	margin-right: 10px;
+}
+
+nav {
+	display: flex;
+	align-items: space-between;
+}
+#nav-left, #nav-center, #nav-right {
+	flex: 1;
+	display: flex;
+}
+#nav-left {
+	justify-content: flex-start;
+}
+#nav-center {
+	justify-content: center;
+}
+#nav-right {
+	justify-content: flex-end;
+}
+
+main {
+	width: 80%;
+	margin: 0 auto;
+	display: flex;
+	justify-content: space-evenly;
+	
+
+}
+
+.item {
+	text-align: center;
+	flex-basis: 25%;
+	margin-bottom: 15px;
+	padding: 10px;
+	background-color: rgba(14, 19, 32, 0.75);
+	border-radius: 4px;
+	box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+}
+
+
+
+
+
+footer {
+	position: sticky;
+	bottom: 0;
+	width: 100%;
+
+	background-color:  #131824;
+}
+footer p {
+	padding: 10px;
+	text-align: center;
+}
+
+@media screen and (max-width: 768px){
+	main {
+		width: 100%;
+	}
+}
+
+
+
+h1 {
+	font-size: 2em;
+}
+
+a {
+	color: skyblue;
+	text-decoration: none;
+}
+a:hover {
+	color: lightblue;
+}

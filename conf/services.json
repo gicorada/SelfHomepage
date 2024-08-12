@@ -1,0 +1,19 @@
+{
+    "services": [
+        {
+            "title": "Radarr",
+            "port": 7878,
+            "image": "https://via.placeholder.com/150"
+        },
+        {
+            "title": "Lidarr",
+            "port": 8686,
+            "image": "https://via.placeholder.com/150"
+        },
+        {
+            "title": "Sonarr",
+            "port": 8989,
+            "image": "https://via.placeholder.com/150"
+        }
+    ]
+}
