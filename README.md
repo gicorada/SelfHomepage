@@ -14,7 +14,7 @@ The `services.json` file should look like this:
 {
   "services": [
     {
-		  "title": "Jellyfin",
+      "title": "Jellyfin",
       "port": 8096,
       "image": "images/services/jellyfin.png"
     }
