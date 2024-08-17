@@ -1,4 +1,6 @@
 {
+	"title": "SelfHomepage",
 	"host": "192.168.1.53",
-	"background_img_path": "images/background.jpg"
+	"background_img_path": "/images/background.jpg",
+	"background_color": "#000000"
 }

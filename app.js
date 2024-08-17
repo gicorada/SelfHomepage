@@ -3,9 +3,7 @@ let HOST
 let servicesArray = [];
 
 function validateSettings(data) {
-    if (data.host == null) {
-        throw new Error('You must declare an host in the settings file.');
-    }
+	// Might be useful later
 }
 
 function validateServices(data) {
@@ -52,17 +50,37 @@ document.addEventListener('DOMContentLoaded', function() {
 	loadData("conf/settings.json", function(data) {
 		try {
 			validateSettings(data);
-			if(data.host) HOST = data.host;
+			if(data.title) {
+				document.title = data.title;
+			} else document.title = "SelfHomepage";
+
+			if(data.host) {
+				HOST = data.host;
+			} else {
+				HOST = "localhost";
+			}
 
 			if(data.background_img_path) {
 				document.body.style.backgroundImage = `url(${data.background_img_path})`;
 				document.body.style.backgroundSize = "cover";
+			} else if(data.background_color) {
+				document.body.style.backgroundColor = data.background_color;
+			} else {
+				// Default background color in case neither image nor color is provided
+				document.body.style.backgroundColor = "#000000";
 			}
 
 		} catch (error) {
 			console.error("Error in settings validation: ", error);
 		}
 	});
+
+
+	// If the script is not executed in the home page, the services will not be added
+	if(!content) {
+		console.error("Content div not found. Not adding services.")
+		return;
+	}
 
     // Loads services
     loadData("conf/services.json", function(data) {
@@ -101,6 +119,7 @@ function createServiceElement(service) {
     let element = document.createElement('a');
 	element.href = service.url;
     element.className = 'item hvr-grow hvr-fade';
+	element.target = "_blank";
 
     element.innerHTML = `
 		<img src="${service.image}" alt="${service.title} logo" class="service-logo">
