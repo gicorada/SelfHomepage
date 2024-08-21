@@ -6,7 +6,7 @@ SelfHomepage aims to support many selfhosted services, and provide a simple way 
 
 ## Installation
 
-Host the files in a webserver, and edit the `config.json` file to add your services.
+Host the files in a webserver, and change the settings according to the instructions below    
 
 The `services.json` file should look like this:
 
