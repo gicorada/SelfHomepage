@@ -61,6 +61,7 @@ document.addEventListener('DOMContentLoaded', function() {
 				html.style.backgroundSize = "cover";
 				html.style.backgroundRepeat = "no-repeat";
 				html.style.backgroundPosition = "center";
+				html.style.backgroundAttachment = "fixed";
 				html.style.height = "100vh";
 
 				const style = document.createElement('style');
