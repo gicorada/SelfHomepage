@@ -50,24 +50,15 @@ document.addEventListener('DOMContentLoaded', function() {
 	loadData("conf/settings.json", function(data) {
 		try {
 			validateSettings(data);
-			if(data.title) {
-				document.title = data.title;
-			} else document.title = "SelfHomepage";
+			document.title = data.title ?? "SelfHomepage";
 
-			if(data.host) {
-				HOST = data.host;
-			} else {
-				HOST = "localhost";
-			}
+			HOST = data.host ?? "localhost";
 
 			if(data.background_img_path) {
 				document.body.style.backgroundImage = `url(${data.background_img_path})`;
 				document.body.style.backgroundSize = "cover";
-			} else if(data.background_color) {
-				document.body.style.backgroundColor = data.background_color;
 			} else {
-				// Default background color in case neither image nor color is provided
-				document.body.style.backgroundColor = "#000000";
+				document.body.style.backgroundColor = data.background_color ?? "#000000";
 			}
 
 		} catch (error) {
@@ -93,7 +84,7 @@ document.addEventListener('DOMContentLoaded', function() {
 					title: item.title,
 					port: item.port,
 					image: item.image,
-					url: `http://${HOST}:${item.port}`
+					url: `http://${item.host ?? HOST}:${item.port}`
 				};
 				servicesArray.push(service);
 			});

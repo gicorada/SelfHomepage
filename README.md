@@ -16,6 +16,7 @@ The `services.json` file should look like this:
     {
       "title": "Jellyfin",
       "port": 8096,
+      "host": "192.168.1.235",
       "image": "images/services/jellyfin.png"
     }
   ]
@@ -24,7 +25,8 @@ The `services.json` file should look like this:
 Available settings:  
 ` title ` (required): Title of the service.  
 ` port ` (required): Port where the service is hosted.  
-` image `: Path to the image of the service.
+` host `: Hostname of the server where this single service is hosted, if not the same of the others. Defaults to the ` host ` you set in ` settings.json `  
+` image `: Path to the image of the service.  
 
 
 You will have to add the images in the `images/services` folder, as they might be copyrighted and I don't want to host them in my github repository.
