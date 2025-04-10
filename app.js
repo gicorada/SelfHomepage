@@ -54,11 +54,28 @@ document.addEventListener('DOMContentLoaded', function() {
 
 			HOST = data.host ?? "localhost";
 
+			html = document.documentElement;
+
 			if(data.background_img_path) {
-				document.body.style.backgroundImage = `url(${data.background_img_path})`;
-				document.body.style.backgroundSize = "cover";
+				html.style.backgroundImage = `url(${data.background_img_path})`;
+				html.style.backgroundSize = "cover";
+				html.style.backgroundRepeat = "no-repeat";
+				html.style.backgroundPosition = "center";
+				html.style.height = "100vh";
+
+				const style = document.createElement('style');
+				style.innerHTML = `
+					html::before {
+					content: "";
+					position: fixed;
+					inset: 0;
+					background: rgba(0, 0, 0, ${data.background_img_opacity ?? "0.5"});
+					z-index: -1;
+					}
+				`;
+				document.head.appendChild(style);
 			} else {
-				document.body.style.backgroundColor = data.background_color ?? "#000000";
+				html.style.backgroundColor = data.background_color ?? "#000000";
 			}
 
 		} catch (error) {

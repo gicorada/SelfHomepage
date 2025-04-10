@@ -36,4 +36,5 @@ Available settings (in `settings.json`):
 ` title `: Title of the page. Default: `SelfHomepage`  
 ` host `: Hostname of the server where the services are hosted. Defaults to ` localhost `, but change with your server local address if you want to access the page from another device.  
 ` background_img_path `: Path to the background image. Please use an absolute path, as the pages can be in different directories  
+` background_img_opacity `: Background image opacity. Defaults to ` 0.5 `    
 ` background_color `: Solid color for the background (if an image is not set). If an image is set, this will be ignored. If neither this nor image path is provided, this defaults to  "#000000"  
