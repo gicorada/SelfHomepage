@@ -1,4 +1,6 @@
 # images
-./images/services/*
-./images/background/*
-./conf/*
+images/services/*
+images/background/*
+
+# configuration files
+conf/*
